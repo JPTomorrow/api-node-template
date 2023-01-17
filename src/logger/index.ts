@@ -1,10 +1,11 @@
-import logger from "pino";
+import logger, { destination } from "pino";
 import dayjs from "dayjs";
 
 // pino-pretty is required to format logs
 const streams = [
   { stream: process.stdout },
-  { stream: logger.destination(`${__dirname}/log/master.log`) },
+  /// Figure out why this is causeing a sonic-boom library error when loging out to file
+  // { stream: logger.destination(`${__dirname}/log/master.log`) },
 ];
 
 const log = logger(

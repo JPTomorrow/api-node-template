@@ -1,18 +1,21 @@
-// import express from "express";
-// import config from "@config/server.json";
-// import log from "@/logger";
+import log from "@/logger";
+import config from "@config/server.json";
+import example from "@/routes/example-route";
+import fastify from "fastify";
 
-// const port = config["appConfig"]["port"] as number;
-// const host = config["appConfig"]["host"] as string;
+const port = config["appConfig"]["port"];
+//const host = config["appConfig"]["host"];
 
-// const app = express();
+const server = fastify({ logger: log });
+server.register(example);
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
+const start = async () => {
+  try {
+    await server.listen({ port: port });
+  } catch (err) {
+    server.log.error(err);
+    process.exit(1);
+  }
+};
 
-// app.listen(port, host, () => {
-//   log.info(`Server is running on port http://${host}:${port}`);
-// });
-
-const a = 2 + "3";
-console.log(a);
+start();
