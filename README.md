@@ -1,15 +1,15 @@
 # Typescript Backend Template
 
 - Typescript
+- Fastify
+- nodemon (for hot reload dev)
 - jest
 - pino (for logging)
 - dayjs (for time-stamps)
-- nodemon (for hot reload dev)
 
 # Development
 
 ```
-npm run dev
+npm run dev // nodemon dev server
+npm run test // jest testing server
 ```
-
-Will use nodemon for file watching.
